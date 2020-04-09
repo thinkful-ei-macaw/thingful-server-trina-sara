@@ -121,6 +121,7 @@ describe.only('Things Endpoints', function() {
 
     context(`Given an XSS attack thing`, () => {
       const testUser = helpers.makeUsersArray()[1]
+      console.log(testUser)
       const {
         maliciousThing,
         expectedThing,
@@ -201,10 +202,11 @@ describe.only('Things Endpoints', function() {
         )
       })
 
-      it('removes XSS attack content', () => {
+      it.only('removes XSS attack content', () => {
+        console.log('test user', testUsers[0])
         return supertest(app)
           .get(`/api/things/${maliciousThing.id}`)
-          .set('Authorization', makeAuthHeader(testUsers[0]))
+          .set('Authorization', makeAuthHeader(testUsers[1]))
           .expect(200)
           .expect(res => {
             expect(res.body.title).to.eql(expectedThing.title)
