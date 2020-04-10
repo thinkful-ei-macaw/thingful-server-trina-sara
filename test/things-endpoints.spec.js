@@ -121,7 +121,6 @@ describe('Things Endpoints', function() {
 
     context(`Given an XSS attack thing`, () => {
       const testUser = helpers.makeUsersArray()[1]
-      console.log(testUser)
       const {
         maliciousThing,
         expectedThing,

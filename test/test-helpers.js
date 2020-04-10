@@ -237,11 +237,11 @@ function seedUsers(db, users) {
     ...user,
     password: bcrypt.hashSync(user.password, 1)
   }))
-  return db.into('blogful_users').insert(preppedUsers)
+  return db.into('thingful_users').insert(preppedUsers)
     .then(() =>
       // update the auto sequence to stay in sync
       db.raw(
-        `SELECT setval('blogful_users_id_seq', ?)`,
+        `SELECT setval('thingful_users_id_seq', ?)`,
         [users[users.length - 1].id],
       )
     )
